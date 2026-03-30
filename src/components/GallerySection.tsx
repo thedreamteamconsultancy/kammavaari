@@ -70,55 +70,6 @@ const GallerySection = () => {
   // Duplicate images for seamless loop
   const items = [...galleryPreview, ...galleryPreview];
 
-  const GalleryCard = ({ item, index, realIndex }: { item: typeof galleryPreview[0]; index: number; realIndex: number }) => (
-    <div
-      className="group relative overflow-hidden cursor-pointer flex-shrink-0"
-      style={{
-        width: 'clamp(180px, 22vw, 270px)',
-        height: 'clamp(240px, 30vw, 360px)',
-        borderRadius: '16px',
-        transition: 'transform 0.4s cubic-bezier(0.25,0.1,0,1)',
-        transform: hovered === index ? 'scale(1.03)' : 'scale(1)',
-      }}
-      onMouseEnter={() => setHovered(index)}
-      onMouseLeave={() => setHovered(null)}
-      onClick={() => setLightbox(realIndex)}
-    >
-      <img
-        src={item.src}
-        alt={item.alt}
-        className="w-full h-full object-cover transition-transform duration-700"
-        style={{ transform: hovered === index ? 'scale(1.1)' : 'scale(1)' }}
-        loading="lazy"
-      />
-      <div
-        className="absolute inset-0 flex items-end"
-        style={{
-          background: 'linear-gradient(to top, rgba(15,10,5,0.8) 0%, rgba(15,10,5,0.2) 40%, transparent 70%)',
-          opacity: hovered === index ? 1 : 0.6,
-          transition: 'opacity 0.4s ease',
-        }}
-      >
-        <div className="p-4 w-full">
-          <p className="text-white font-display font-semibold text-[15px] sm:text-[17px]">{item.caption}</p>
-          <div className="flex items-center gap-2 mt-1.5" style={{
-            opacity: hovered === index ? 1 : 0,
-            transform: hovered === index ? 'translateY(0)' : 'translateY(8px)',
-            transition: 'all 0.3s ease',
-          }}>
-            <div className="w-5 h-[1px]" style={{ background: 'hsl(var(--gold-500))' }} />
-            <span className="font-body text-[10px] tracking-[0.08em] uppercase" style={{ color: 'hsl(var(--gold-500))' }}>View</span>
-          </div>
-        </div>
-      </div>
-      <div className="absolute inset-0 rounded-[16px] pointer-events-none" style={{
-        border: '1.5px solid hsla(40,52%,54%,0.5)',
-        opacity: hovered === index ? 1 : 0,
-        transition: 'opacity 0.4s ease',
-      }} />
-    </div>
-  );
-
   return (
     <section className="section-padding" style={{ background: 'hsl(36 60% 96%)' }}>
       <div className="container mx-auto" style={{ maxWidth: '1100px' }}>
@@ -149,14 +100,62 @@ const GallerySection = () => {
           className="flex gap-3 sm:gap-4 will-change-transform"
           style={{ width: 'max-content' }}
         >
-          {items.map((item, i) => (
-            <GalleryCard
-              key={`${item.caption}-${i}`}
-              item={item}
-              index={i}
-              realIndex={i % galleryPreview.length}
-            />
-          ))}
+          {items.map((item, i) => {
+            const realIndex = i % galleryPreview.length;
+            const isHovered = hovered === i;
+            return (
+              <div
+                key={`${item.caption}-${i}`}
+                className="relative overflow-hidden cursor-pointer flex-shrink-0"
+                style={{
+                  width: 'clamp(180px, 22vw, 270px)',
+                  height: 'clamp(240px, 30vw, 360px)',
+                  borderRadius: '16px',
+                  transition: 'transform 0.5s cubic-bezier(0.25, 0.1, 0, 1)',
+                  transform: isHovered ? 'scale(1.03)' : 'scale(1)',
+                }}
+                onMouseEnter={() => setHovered(i)}
+                onMouseLeave={() => setHovered(null)}
+                onClick={() => setLightbox(realIndex)}
+              >
+                <img
+                  src={item.src}
+                  alt={item.alt}
+                  className="w-full h-full object-cover"
+                  style={{
+                    transition: 'transform 0.7s cubic-bezier(0.25, 0.1, 0, 1)',
+                    transform: isHovered ? 'scale(1.12)' : 'scale(1)',
+                  }}
+                  loading="lazy"
+                />
+                <div
+                  className="absolute inset-0 flex items-end"
+                  style={{
+                    background: 'linear-gradient(to top, rgba(15,10,5,0.8) 0%, rgba(15,10,5,0.2) 40%, transparent 70%)',
+                    opacity: isHovered ? 1 : 0.6,
+                    transition: 'opacity 0.5s ease',
+                  }}
+                >
+                  <div className="p-4 w-full">
+                    <p className="text-white font-display font-semibold text-[15px] sm:text-[17px]">{item.caption}</p>
+                    <div className="flex items-center gap-2 mt-1.5" style={{
+                      opacity: isHovered ? 1 : 0,
+                      transform: isHovered ? 'translateY(0)' : 'translateY(8px)',
+                      transition: 'all 0.4s ease',
+                    }}>
+                      <div className="w-5 h-[1px]" style={{ background: 'hsl(var(--gold-500))' }} />
+                      <span className="font-body text-[10px] tracking-[0.08em] uppercase" style={{ color: 'hsl(var(--gold-500))' }}>View</span>
+                    </div>
+                  </div>
+                </div>
+                <div className="absolute inset-0 rounded-[16px] pointer-events-none" style={{
+                  border: '1.5px solid hsla(40,52%,54%,0.5)',
+                  opacity: isHovered ? 1 : 0,
+                  transition: 'opacity 0.5s ease',
+                }} />
+              </div>
+            );
+          })}
         </div>
       </div>
 
