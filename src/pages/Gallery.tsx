@@ -5,24 +5,35 @@ import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import ScrollReveal from "@/components/ScrollReveal";
 
-const GALLERY_HERO = "https://images.unsplash.com/photo-1602216056096-3b40cc0c9944?auto=format&fit=crop&w=1920&q=75";
-const GALLERY_FALLBACK = "https://images.unsplash.com/photo-1583939411023-14783179e581?auto=format&fit=crop&w=1920&q=75";
+const GALLERY_HERO = "https://i.pinimg.com/1200x/c9/62/af/c962af1118ca04572f1ceb86e6265492.jpg";
+const GALLERY_FALLBACK = "https://i.pinimg.com/1200x/e3/3e/5c/e33e5c4a608444b2dd0210796113dcad.jpg";
 
 const categories = ["All", "Ceremonies", "Receptions", "Mehendi", "Candids", "Sangeet", "Muhurtham"];
 
 const galleryItems = [
-  { src: "https://images.unsplash.com/photo-1594556218010-8a5a2a4a8b8b?w=600&q=75", alt: "Wedding ceremony", caption: "Sacred Vows", cat: "Ceremonies" },
-  { src: "https://images.unsplash.com/photo-1602216056096-3b40cc0c9944?w=600&q=75", alt: "Reception celebration", caption: "Grand Reception", cat: "Receptions" },
-  { src: "https://images.unsplash.com/photo-1519741347686-c1e0aadf4611?w=600&q=75", alt: "Mehendi ceremony", caption: "Mehendi Art", cat: "Mehendi" },
-  { src: "https://images.unsplash.com/photo-1607861716497-e65ab29fc7ac?w=600&q=75", alt: "Couple portrait", caption: "Couple Portrait", cat: "Candids" },
-  { src: "https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=600&q=75", alt: "Family blessings", caption: "Family Blessings", cat: "Ceremonies" },
-  { src: "https://images.unsplash.com/photo-1630514969818-94aefc6ba584?w=600&q=75", alt: "Reception dance", caption: "First Dance", cat: "Receptions" },
-  { src: "https://images.unsplash.com/photo-1583939411023-14783179e581?w=600&q=75", alt: "Sacred fire", caption: "Muhurtham", cat: "Muhurtham" },
-  { src: "https://images.unsplash.com/photo-1620735692151-26a7e0748429?w=600&q=75", alt: "Wedding prep", caption: "Sangeet Night", cat: "Sangeet" },
-  { src: "https://images.unsplash.com/photo-1519741347686-c1e0aadf4611?w=600&q=75", alt: "Mehendi details", caption: "Bridal Hands", cat: "Mehendi" },
-  { src: "https://images.unsplash.com/photo-1594556218010-8a5a2a4a8b8b?w=600&q=75", alt: "Garland exchange", caption: "Garland Exchange", cat: "Muhurtham" },
-  { src: "https://images.unsplash.com/photo-1602216056096-3b40cc0c9944?w=600&q=75", alt: "Candid moment", caption: "Candid Joy", cat: "Candids" },
-  { src: "https://images.unsplash.com/photo-1630514969818-94aefc6ba584?w=600&q=75", alt: "Sangeet performance", caption: "Sangeet Performance", cat: "Sangeet" },
+  { src: "https://i.pinimg.com/736x/e8/d1/a9/e8d1a9e54b2b6e5aa5e43a13ec4e8576.jpg", alt: "Traditional wedding ceremony", caption: "Sacred Vows", cat: "Ceremonies" },
+  { src: "https://cdn0.weddingwire.in/article/3427/original/1280/jpg/127243-golden-shutter-studio.jpeg", alt: "Grand reception celebration", caption: "Grand Reception", cat: "Receptions" },
+  { src: "https://i.pinimg.com/1200x/9e/7b/81/9e7b815120c303564fc3205be4bacd86.jpg", alt: "Mehendi art close-up", caption: "Mehendi Art", cat: "Mehendi" },
+  { src: "https://i.pinimg.com/736x/d2/22/6f/d2226f65207174459f0f80ccc32c042e.jpg", alt: "Couple candid moment", caption: "Couple Portrait", cat: "Candids" },
+  { src: "https://i.pinimg.com/736x/2c/dd/49/2cdd49db8d0212309863abfbfb98b324.jpg", alt: "Family blessings at ceremony", caption: "Family Blessings", cat: "Ceremonies" },
+  { src: "https://i.pinimg.com/736x/7f/76/21/7f76217aebc3af15bab86140a9ad9c76.jpg", alt: "Reception dance celebration", caption: "First Dance", cat: "Receptions" },
+  { src: "https://i.pinimg.com/736x/7a/82/52/7a8252022f3d1b0461088a17eaeda794.jpg", alt: "Sacred fire ritual", caption: "Muhurtham", cat: "Muhurtham" },
+  { src: "https://i.pinimg.com/1200x/39/35/84/3935844c7c004a22b7c5b07efa986e53.jpg", alt: "Sangeet night performance", caption: "Sangeet Night", cat: "Sangeet" },
+  { src: "https://i.pinimg.com/1200x/f2/77/26/f27726df2645d4c0fd62cb8d59bee552.jpg", alt: "Bridal mehendi hands", caption: "Bridal Hands", cat: "Mehendi" },
+  { src: "https://i.pinimg.com/1200x/fa/67/7f/fa677fb036bc9c22b696224c3fb0ea40.jpg", alt: "Garland exchange ceremony", caption: "Garland Exchange", cat: "Muhurtham" },
+  { src: "https://i.pinimg.com/1200x/05/f5/54/05f554937ea0367d048cda3be9a8fa81.jpg", alt: "Joyful candid moment", caption: "Candid Joy", cat: "Candids" },
+  { src: "https://i.pinimg.com/1200x/50/f0/67/50f0672e3ed17ccc1703bc91a40e5f34.jpg", alt: "Sangeet group performance", caption: "Sangeet Performance", cat: "Sangeet" },
+  { src: "https://i.pinimg.com/1200x/45/6a/8e/456a8e8787815c09608a6bf826de59de.jpg", alt: "Traditional wedding decor", caption: "Wedding Decor", cat: "Ceremonies" },
+  { src: "https://i.pinimg.com/1200x/29/49/da/2949dad98469777cadd18c3fea94e9f7.jpg", alt: "Bridal ceremony moments", caption: "Bridal Ceremony", cat: "Ceremonies" },
+  { src: "https://i.pinimg.com/736x/b6/c6/fe/b6c6fe9540ed4cce7c964ed2d0802d89.jpg", alt: "Couple at mandap", caption: "At the Mandap", cat: "Muhurtham" },
+  { src: "https://i.pinimg.com/736x/aa/82/25/aa8225f3b316f9dde4fbbb9059289bb2.jpg", alt: "Wedding portrait", caption: "Wedding Portrait", cat: "Candids" },
+  { src: "https://i.pinimg.com/1200x/e3/3e/5c/e33e5c4a608444b2dd0210796113dcad.jpg", alt: "Reception celebration night", caption: "Reception Night", cat: "Receptions" },
+  { src: "https://i.pinimg.com/1200x/8a/8a/66/8a8a6632ad1b4b54ef1f9b273a00cc2a.jpg", alt: "Mehendi celebration", caption: "Mehendi Celebration", cat: "Mehendi" },
+  { src: "https://i.pinimg.com/1200x/41/7e/3c/417e3c7cac7159bb1b7fc23d54605a13.jpg", alt: "Sangeet dance night", caption: "Dance Night", cat: "Sangeet" },
+  { src: "https://i.pinimg.com/736x/20/10/94/201094000a95d72820f7dbaee55456f9.jpg", alt: "Wedding couple at reception", caption: "Couple at Reception", cat: "Receptions" },
+  { src: "https://i.pinimg.com/736x/ff/f9/92/fff992f8730317b747f5955629b66031.jpg", alt: "Candid wedding moment", caption: "Pure Joy", cat: "Candids" },
+  { src: "https://i.pinimg.com/736x/f2/9d/17/f29d17835bd27cea6321ba36e8094077.jpg", alt: "Traditional wedding celebration", caption: "Traditional Celebration", cat: "Ceremonies" },
+  { src: "https://i.pinimg.com/1200x/c9/62/af/c962af1118ca04572f1ceb86e6265492.jpg", alt: "Wedding blessings", caption: "Blessings", cat: "Ceremonies" },
 ];
 
 const Gallery = () => {

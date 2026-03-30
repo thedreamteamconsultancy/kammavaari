@@ -1,12 +1,33 @@
 import { useState, useEffect } from "react";
 import { Search } from "lucide-react";
+import { useIsMobile } from "@/hooks/use-mobile";
 
-const HERO_IMAGES = [
-  "https://images.unsplash.com/photo-1583939411023-14783179e581?auto=format&fit=crop&w=1920&q=75",
-  "https://images.unsplash.com/photo-1519741347686-c1e0aadf4611?auto=format&fit=crop&w=1920&q=75",
-  "https://images.unsplash.com/photo-1602216056096-3b40cc0c9944?auto=format&fit=crop&w=1920&q=75",
-  "https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=1920&q=75",
-  "https://images.unsplash.com/photo-1607861716497-e65ab29fc7ac?auto=format&fit=crop&w=1920&q=75",
+const HERO_IMAGES_MOBILE = [
+  "https://i.pinimg.com/736x/e8/d1/a9/e8d1a9e54b2b6e5aa5e43a13ec4e8576.jpg",
+  "https://cdn0.weddingwire.in/article/3427/original/1280/jpg/127243-golden-shutter-studio.jpeg",
+  "https://i.pinimg.com/1200x/9e/7b/81/9e7b815120c303564fc3205be4bacd86.jpg",
+  "https://i.pinimg.com/736x/d2/22/6f/d2226f65207174459f0f80ccc32c042e.jpg",
+  "https://i.pinimg.com/736x/2c/dd/49/2cdd49db8d0212309863abfbfb98b324.jpg",
+  "https://i.pinimg.com/736x/7f/76/21/7f76217aebc3af15bab86140a9ad9c76.jpg",
+  "https://i.pinimg.com/736x/7a/82/52/7a8252022f3d1b0461088a17eaeda794.jpg",
+  "https://i.pinimg.com/1200x/39/35/84/3935844c7c004a22b7c5b07efa986e53.jpg",
+  "https://i.pinimg.com/1200x/f2/77/26/f27726df2645d4c0fd62cb8d59bee552.jpg",
+  "https://i.pinimg.com/1200x/fa/67/7f/fa677fb036bc9c22b696224c3fb0ea40.jpg",
+  "https://i.pinimg.com/1200x/05/f5/54/05f554937ea0367d048cda3be9a8fa81.jpg",
+  "https://i.pinimg.com/1200x/50/f0/67/50f0672e3ed17ccc1703bc91a40e5f34.jpg",
+  "https://i.pinimg.com/1200x/45/6a/8e/456a8e8787815c09608a6bf826de59de.jpg",
+  "https://i.pinimg.com/1200x/29/49/da/2949dad98469777cadd18c3fea94e9f7.jpg",
+  "https://i.pinimg.com/736x/b6/c6/fe/b6c6fe9540ed4cce7c964ed2d0802d89.jpg",
+];
+
+const HERO_IMAGES_DESKTOP = [
+  "https://i.pinimg.com/736x/aa/82/25/aa8225f3b316f9dde4fbbb9059289bb2.jpg",
+  "https://i.pinimg.com/1200x/e3/3e/5c/e33e5c4a608444b2dd0210796113dcad.jpg",
+  "https://i.pinimg.com/1200x/8a/8a/66/8a8a6632ad1b4b54ef1f9b273a00cc2a.jpg",
+  "https://i.pinimg.com/1200x/41/7e/3c/417e3c7cac7159bb1b7fc23d54605a13.jpg",
+  "https://i.pinimg.com/736x/20/10/94/201094000a95d72820f7dbaee55456f9.jpg",
+  "https://i.pinimg.com/736x/ff/f9/92/fff992f8730317b747f5955629b66031.jpg",
+  "https://i.pinimg.com/736x/ff/f9/92/fff992f8730317b747f5955629b66031.jpg",
 ];
 
 const phrases = [
@@ -45,13 +66,22 @@ const GoldParticles = () => {
 };
 
 const HeroSection = () => {
+  const isMobile = useIsMobile();
+  const HERO_IMAGES = isMobile ? HERO_IMAGES_MOBILE : HERO_IMAGES_DESKTOP;
   const [phraseIdx, setPhraseIdx] = useState(0);
   const [visible, setVisible] = useState(true);
   const [imgIdx, setImgIdx] = useState(0);
   const [imgVisible, setImgVisible] = useState(true);
   const [imagesReady, setImagesReady] = useState(false);
 
+  // Reset image index when switching between mobile/desktop sets
   useEffect(() => {
+    setImgIdx(0);
+    setImgVisible(true);
+  }, [isMobile]);
+
+  useEffect(() => {
+    setImagesReady(false);
     let loaded = 0;
     HERO_IMAGES.forEach((src) => {
       const img = new Image();
@@ -62,7 +92,7 @@ const HeroSection = () => {
     });
     const t = setTimeout(() => setImagesReady(true), 3000);
     return () => clearTimeout(t);
-  }, []);
+  }, [HERO_IMAGES]);
 
   useEffect(() => {
     const cycle = setInterval(() => {
@@ -84,7 +114,7 @@ const HeroSection = () => {
       }, 800);
     }, 6000);
     return () => clearInterval(cycle);
-  }, []);
+  }, [HERO_IMAGES]);
 
   return (
     <section className="relative w-full overflow-hidden" style={{ height: '100svh', minHeight: '600px' }}>

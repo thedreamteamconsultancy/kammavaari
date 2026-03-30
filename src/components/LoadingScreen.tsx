@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
 
 const LOGO_URL = "https://res.cloudinary.com/dvmrhs2ek/image/upload/v1774700099/wjibi9xge8sdyxqhi09a.png";
+const LOADING_BG_MOBILE = "https://i.pinimg.com/736x/f2/9d/17/f29d17835bd27cea6321ba36e8094077.jpg";
+const LOADING_BG_DESKTOP = "https://i.pinimg.com/1200x/c9/62/af/c962af1118ca04572f1ceb86e6265492.jpg";
 
 const MandalaSVG = ({ className }: { className?: string }) => (
   <svg viewBox="0 0 100 100" className={className} fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -63,9 +65,21 @@ const LoadingScreen = ({ onComplete }: { onComplete: () => void }) => {
         willChange: 'opacity',
       }}
     >
+      {/* Background image */}
+      <picture className="absolute inset-0">
+        <source media="(min-width: 768px)" srcSet={LOADING_BG_DESKTOP} />
+        <img
+          src={LOADING_BG_MOBILE}
+          alt=""
+          className="w-full h-full object-cover"
+          style={{ opacity: 0.25 }}
+        />
+      </picture>
+      {/* Dark overlay for readability */}
+      <div className="absolute inset-0" style={{ background: 'rgba(15,10,5,0.65)' }} />
       {/* Mandala */}
       <div
-        className="transition-all duration-[600ms]"
+        className="relative transition-all duration-[600ms]"
         style={{
           opacity: phase >= 1 ? 1 : 0,
           transform: phase >= 1 ? 'scale(1)' : 'scale(0.6)',
@@ -78,7 +92,7 @@ const LoadingScreen = ({ onComplete }: { onComplete: () => void }) => {
 
       {/* Logo image replaces text */}
       <div
-        className="transition-all duration-[500ms]"
+        className="relative transition-all duration-[500ms]"
         style={{
           opacity: phase >= 3 ? 1 : 0,
           transform: phase >= 3 ? 'translateY(0)' : 'translateY(8px)',
@@ -90,7 +104,7 @@ const LoadingScreen = ({ onComplete }: { onComplete: () => void }) => {
 
       {/* Tagline */}
       <p
-        className="font-body text-[13px] font-light tracking-[0.18em] transition-all duration-[500ms]"
+        className="relative font-body text-[13px] font-light tracking-[0.18em] transition-all duration-[500ms]"
         style={{
           color: 'hsl(30 16% 69%)',
           opacity: phase >= 4 ? 0.65 : 0,
@@ -101,7 +115,7 @@ const LoadingScreen = ({ onComplete }: { onComplete: () => void }) => {
       </p>
 
       {/* Progress bar */}
-      <div className="flex justify-center mt-2">
+      <div className="relative flex justify-center mt-2">
         <div className="w-[120px] h-[1px] bg-white/10 overflow-hidden">
           <div
             className="h-full"
