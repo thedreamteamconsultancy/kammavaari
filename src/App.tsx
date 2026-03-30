@@ -5,6 +5,7 @@ import { Toaster as Sonner } from "@/components/ui/sonner";
 import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import LoadingScreen from "@/components/LoadingScreen";
+import MusicPlayer from "@/components/MusicPlayer";
 import PageTransition from "@/components/PageTransition";
 import Index from "./pages/Index.tsx";
 import AboutUs from "./pages/AboutUs.tsx";
@@ -53,6 +54,7 @@ const App = () => {
         <div style={{ background: 'hsl(30 50% 4%)', minHeight: '100vh', overflowX: 'hidden', width: '100%', maxWidth: '100vw' }}>
           <BrowserRouter>
             <AnimatedRoutes />
+            <MusicPlayer />
           </BrowserRouter>
         </div>
         {showLoading && <LoadingScreen onComplete={handleLoadingComplete} />}
