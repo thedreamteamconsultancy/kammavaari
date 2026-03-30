@@ -26,7 +26,7 @@ const testimonials = [
   },
 ];
 
-const FALLBACK_IMG = "https://images.unsplash.com/photo-1602216056096-3b40cc0c9944?auto=format&fit=crop&w=800&q=70";
+const FALLBACK_IMG = "https://i.pinimg.com/736x/f2/9d/17/f29d17835bd27cea6321ba36e8094077.jpg";
 
 const TestimonialsSection = () => {
   const [active, setActive] = useState(0);

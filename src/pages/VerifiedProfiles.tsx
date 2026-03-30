@@ -3,13 +3,14 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import ScrollReveal from "@/components/ScrollReveal";
+import { useAuthModal } from "@/hooks/useAuthModal";
 import { ShieldCheck, UserCheck, BadgeCheck, Eye, ArrowRight, CheckCircle, Sparkles } from "lucide-react";
 
 const features = [
-  { icon: ShieldCheck, title: "Identity Verification", desc: "Every profile goes through Aadhaar & government ID verification to ensure authenticity. Our team cross-references details with official databases for complete peace of mind.", image: "https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=600&q=70", color: "40, 52%, 54%" },
-  { icon: UserCheck, title: "Family Background Check", desc: "Our dedicated team personally verifies family details, profession, education credentials, and community standing through in-person visits and reference checks.", image: "https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=600&q=70", color: "25, 70%, 45%" },
-  { icon: BadgeCheck, title: "Photo Authenticity", desc: "All photos are reviewed by our expert team to ensure they are recent, genuine, and accurately represent the individual. AI-powered duplicate detection prevents fake profiles.", image: "https://images.unsplash.com/photo-1606216794074-735e91aa2c92?auto=format&fit=crop&w=600&q=70", color: "340, 50%, 50%" },
-  { icon: Eye, title: "Regular Audits", desc: "Profiles are periodically reviewed by our quality assurance team. Inactive or suspicious accounts are flagged, investigated, and removed within 24 hours.", image: "https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=600&q=70", color: "200, 50%, 45%" },
+  { icon: ShieldCheck, title: "Identity Verification", desc: "Every profile goes through Aadhaar & government ID verification to ensure authenticity. Our team cross-references details with official databases for complete peace of mind.", image: "https://i.pinimg.com/736x/7a/82/52/7a8252022f3d1b0461088a17eaeda794.jpg", color: "40, 52%, 54%" },
+  { icon: UserCheck, title: "Family Background Check", desc: "Our dedicated team personally verifies family details, profession, education credentials, and community standing through in-person visits and reference checks.", image: "https://i.pinimg.com/736x/2c/dd/49/2cdd49db8d0212309863abfbfb98b324.jpg", color: "25, 70%, 45%" },
+  { icon: BadgeCheck, title: "Photo Authenticity", desc: "All photos are reviewed by our expert team to ensure they are recent, genuine, and accurately represent the individual. AI-powered duplicate detection prevents fake profiles.", image: "https://i.pinimg.com/1200x/9e/7b/81/9e7b815120c303564fc3205be4bacd86.jpg", color: "340, 50%, 50%" },
+  { icon: Eye, title: "Regular Audits", desc: "Profiles are periodically reviewed by our quality assurance team. Inactive or suspicious accounts are flagged, investigated, and removed within 24 hours.", image: "https://i.pinimg.com/1200x/8a/8a/66/8a8a6632ad1b4b54ef1f9b273a00cc2a.jpg", color: "200, 50%, 45%" },
 ];
 
 const stats = [
@@ -37,6 +38,7 @@ const trustPoints = [
 
 const VerifiedProfiles = () => {
   const [activeStep, setActiveStep] = useState(0);
+  const { openAuth } = useAuthModal();
 
   return (
     <div className="min-h-screen" style={{ background: 'hsl(var(--cream-50))' }}>
@@ -46,7 +48,7 @@ const VerifiedProfiles = () => {
       <section className="relative flex items-center justify-center overflow-hidden" style={{ height: '70vh', minHeight: '480px' }}>
         <div className="absolute inset-0" style={{ background: 'hsl(var(--ink-900))' }} />
         <img
-          src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=1920&q=60"
+          src="https://i.pinimg.com/1200x/fa/67/7f/fa677fb036bc9c22b696224c3fb0ea40.jpg"
           alt="Verification"
           className="absolute inset-0 w-full h-full object-cover"
           style={{ opacity: 0.12, filter: 'saturate(0.4) blur(1px)' }}
@@ -251,6 +253,7 @@ const VerifiedProfiles = () => {
               }}
               onMouseEnter={e => { e.currentTarget.style.transform = 'translateY(-2px)'; e.currentTarget.style.boxShadow = '0 12px 40px rgba(201,168,76,0.4)'; }}
               onMouseLeave={e => { e.currentTarget.style.transform = 'translateY(0)'; e.currentTarget.style.boxShadow = '0 8px 32px rgba(201,168,76,0.3)'; }}
+              onClick={() => openAuth('signup')}
             >
               Register Free <ArrowRight className="w-4 h-4" />
             </button>

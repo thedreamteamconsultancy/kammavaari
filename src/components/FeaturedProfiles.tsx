@@ -1,4 +1,5 @@
 import ScrollReveal from "./ScrollReveal";
+import { useAuthModal } from "@/hooks/useAuthModal";
 
 const profiles = [
   { name: "S***a, 27", details: "Software Engineer · Hyderabad", badge: "Premium Member" },
@@ -7,6 +8,7 @@ const profiles = [
 ];
 
 const FeaturedProfiles = () => {
+  const { openAuth } = useAuthModal();
   return (
     <section className="section-padding" style={{ background: 'hsl(40 100% 98%)' }}>
       <div className="container mx-auto">
@@ -99,6 +101,7 @@ const FeaturedProfiles = () => {
                       e.currentTarget.style.background = 'transparent';
                       e.currentTarget.style.color = 'hsl(40 58% 38%)';
                     }}
+                    onClick={() => openAuth('signup')}
                   >
                     Express Interest
                   </button>

@@ -6,13 +6,13 @@ import WhatsAppButton from "@/components/WhatsAppButton";
 import ScrollReveal from "@/components/ScrollReveal";
 import { Shield, Clock, HeartHandshake, Check, X, Crown, Sparkles, Star, Lock } from "lucide-react";
 
-const PREMIUM_HERO = "https://images.unsplash.com/photo-1519741347686-c1e0aadf4611?auto=format&fit=crop&w=1920&q=75";
-const PREMIUM_FALLBACK = "https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=1920&q=75";
+const PREMIUM_HERO = "https://i.pinimg.com/1200x/29/49/da/2949dad98469777cadd18c3fea94e9f7.jpg";
+const PREMIUM_FALLBACK = "https://i.pinimg.com/736x/e8/d1/a9/e8d1a9e54b2b6e5aa5e43a13ec4e8576.jpg";
 
 const benefitImages = [
-  "https://images.unsplash.com/photo-1607861716497-e65ab29fc7ac?w=600&q=65",
-  "https://images.unsplash.com/photo-1602216056096-3b40cc0c9944?w=600&q=65",
-  "https://images.unsplash.com/photo-1583939411023-14783179e581?w=600&q=65",
+  "https://i.pinimg.com/1200x/05/f5/54/05f554937ea0367d048cda3be9a8fa81.jpg",
+  "https://i.pinimg.com/1200x/50/f0/67/50f0672e3ed17ccc1703bc91a40e5f34.jpg",
+  "https://i.pinimg.com/736x/7f/76/21/7f76217aebc3af15bab86140a9ad9c76.jpg",
 ];
 
 const benefits = [
@@ -199,7 +199,7 @@ const PremiumPlans = () => {
 
       {/* Testimonials — cinematic */}
       <section className="relative overflow-hidden" style={{ background: '#0F0A05' }}>
-        <div className="absolute inset-0 pointer-events-none" style={{ background: `url(https://images.unsplash.com/photo-1519741347686-c1e0aadf4611?auto=format&fit=crop&w=1920&q=65) center/cover`, filter: 'brightness(0.35)', opacity: 0.4 }} />
+        <div className="absolute inset-0 pointer-events-none" style={{ background: `url(https://i.pinimg.com/1200x/e3/3e/5c/e33e5c4a608444b2dd0210796113dcad.jpg) center/cover`, filter: 'brightness(0.35)', opacity: 0.4 }} />
         <div className="absolute inset-0" style={{ background: 'rgba(15,10,5,0.75)' }} />
         <div className="relative section-padding" style={{ zIndex: 1 }}>
           <div className="container mx-auto">

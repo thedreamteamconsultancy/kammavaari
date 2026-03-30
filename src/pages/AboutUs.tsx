@@ -5,9 +5,9 @@ import ScrollReveal from "@/components/ScrollReveal";
 import { Heart, Users, ShieldCheck, Clock } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 
-const ABOUT_HERO = "https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=1920&q=75";
-const ABOUT_FALLBACK = "https://images.unsplash.com/photo-1602216056096-3b40cc0c9944?auto=format&fit=crop&w=1920&q=75";
-const STORY_IMG = "https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=800&q=80";
+const ABOUT_HERO = "https://i.pinimg.com/1200x/c9/62/af/c962af1118ca04572f1ceb86e6265492.jpg";
+const ABOUT_FALLBACK = "https://i.pinimg.com/1200x/e3/3e/5c/e33e5c4a608444b2dd0210796113dcad.jpg";
+const STORY_IMG = "https://i.pinimg.com/736x/b6/c6/fe/b6c6fe9540ed4cce7c964ed2d0802d89.jpg";
 const CHAIRMAN_IMG = "https://res.cloudinary.com/djlrarljg/image/upload/v1774790524/1_gyolvt.jpg";
 
 const stats = [
@@ -50,10 +50,10 @@ const Counter = ({ target, suffix }: { target: number; suffix: string }) => {
 };
 
 const valueImages = [
-  "https://images.unsplash.com/photo-1602216056096-3b40cc0c9944?w=600&q=70",
-  "https://images.unsplash.com/photo-1607861716497-e65ab29fc7ac?w=600&q=70",
-  "https://images.unsplash.com/photo-1583939411023-14783179e581?w=600&q=70",
-  "https://images.unsplash.com/photo-1519741347686-c1e0aadf4611?w=600&q=70",
+  "https://i.pinimg.com/1200x/fa/67/7f/fa677fb036bc9c22b696224c3fb0ea40.jpg",
+  "https://i.pinimg.com/736x/d2/22/6f/d2226f65207174459f0f80ccc32c042e.jpg",
+  "https://i.pinimg.com/736x/aa/82/25/aa8225f3b316f9dde4fbbb9059289bb2.jpg",
+  "https://i.pinimg.com/736x/2c/dd/49/2cdd49db8d0212309863abfbfb98b324.jpg",
 ];
 
 const values = [
@@ -274,11 +274,11 @@ const AboutUs = () => (
                   loading="lazy"
                 />
                 <div className={`values-overlay absolute inset-0`} style={{ background: 'linear-gradient(to top, rgba(15,10,5,0.92) 0%, rgba(15,10,5,0.55) 50%, rgba(15,10,5,0.2) 100%)' }} />
-                <div className="absolute bottom-0 left-0 right-0 relative" style={{ padding: 'clamp(16px,3vw,24px)', zIndex: 2 }}>
-                  <div className="inline-block rounded-xl transition-all duration-500" style={{ background: 'rgba(10,5,2,0.6)', backdropFilter: 'blur(6px)', padding: '12px 16px' }}>
-                    <span style={{ color: '#C9A84C', fontSize: '22px', display: 'block', marginBottom: '8px' }}>{v.icon}</span>
-                    <h3 className="font-display font-semibold text-white mb-1" style={{ fontSize: 'clamp(18px,2.5vw,22px)' }}>{v.title}</h3>
-                    <p className="font-body font-light text-[13px] leading-[1.6]" style={{ color: 'rgba(255,255,255,0.72)' }}>{v.body}</p>
+                <div className="absolute bottom-0 left-0 right-0" style={{ padding: 'clamp(14px,2.5vw,20px)', zIndex: 2 }}>
+                  <div className="rounded-xl" style={{ background: 'rgba(10,5,2,0.5)', backdropFilter: 'blur(8px)', padding: '10px 14px' }}>
+                    <span style={{ color: '#C9A84C', fontSize: '18px', display: 'block', marginBottom: '4px' }}>{v.icon}</span>
+                    <h3 className="font-display font-semibold text-white" style={{ fontSize: 'clamp(15px,2vw,18px)', marginBottom: '2px' }}>{v.title}</h3>
+                    <p className="font-body font-light leading-[1.5]" style={{ fontSize: '11px', color: 'rgba(255,255,255,0.6)' }}>{v.body}</p>
                   </div>
                 </div>
                 <div className="absolute bottom-0 left-6 right-6 h-[2px] transition-transform duration-[400ms] origin-left scale-x-0 group-hover:scale-x-100" style={{ background: 'linear-gradient(to right, #C9A84C, transparent)' }} />

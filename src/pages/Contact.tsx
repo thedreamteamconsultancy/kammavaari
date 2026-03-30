@@ -5,8 +5,8 @@ import WhatsAppButton from "@/components/WhatsAppButton";
 import ScrollReveal from "@/components/ScrollReveal";
 import { Phone, Mail, MapPin, Send } from "lucide-react";
 
-const CONTACT_HERO = "https://images.unsplash.com/photo-1607861716497-e65ab29fc7ac?auto=format&fit=crop&w=1920&q=75";
-const CONTACT_FALLBACK = "https://images.unsplash.com/photo-1519741347686-c1e0aadf4611?auto=format&fit=crop&w=1920&q=75";
+const CONTACT_HERO = "https://i.pinimg.com/1200x/45/6a/8e/456a8e8787815c09608a6bf826de59de.jpg";
+const CONTACT_FALLBACK = "https://i.pinimg.com/1200x/39/35/84/3935844c7c004a22b7c5b07efa986e53.jpg";
 
 const branches = [
   { name: "Headquarters", address: "Plot No 1282, Road No 64, Jubilee Hills, Hyderabad - 500033", hq: true, mapUrl: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3806.3!2d78.4083!3d17.4325!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bcb90c96dbd6aa9%3A0x8a6d1b44a6b1f0!2sJubilee+Hills%2C+Hyderabad!5e0!3m2!1sen!2sin!4v1700000000000" },

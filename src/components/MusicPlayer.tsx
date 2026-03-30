@@ -6,39 +6,52 @@ const MusicPlayer = () => {
     return localStorage.getItem("kv-music-muted") === "true";
   });
   const [ready, setReady] = useState(false);
+  const resumeRef = useRef<(() => void) | null>(null);
 
   useEffect(() => {
     const audio = new Audio("/music/background.mp3");
     audio.loop = true;
     audio.volume = 0.35;
+    audio.preload = "auto";
     audioRef.current = audio;
 
-    const tryPlay = () => {
-      if (muted) return;
-      audio.play().then(() => setReady(true)).catch(() => {
-        // Autoplay blocked — wait for first user interaction
-        const resume = () => {
-          if (!audioRef.current) return;
-          const wasMuted = localStorage.getItem("kv-music-muted") === "true";
-          if (!wasMuted) {
-            audioRef.current.play().then(() => setReady(true)).catch(() => {});
-          }
-          document.removeEventListener("click", resume);
-          document.removeEventListener("touchstart", resume);
-        };
-        document.addEventListener("click", resume, { once: true });
-        document.addEventListener("touchstart", resume, { once: true });
-      });
+    const startPlayback = () => {
+      if (!audioRef.current) return;
+      const wasMuted = localStorage.getItem("kv-music-muted") === "true";
+      if (wasMuted) return;
+      audioRef.current.play().then(() => {
+        setReady(true);
+        cleanup();
+      }).catch(() => {});
     };
 
-    tryPlay();
+    const cleanup = () => {
+      document.removeEventListener("click", startPlayback, true);
+      document.removeEventListener("touchstart", startPlayback, true);
+      document.removeEventListener("keydown", startPlayback, true);
+      document.removeEventListener("scroll", startPlayback, true);
+      resumeRef.current = null;
+    };
+
+    // Try autoplay immediately
+    if (!muted) {
+      audio.play().then(() => {
+        setReady(true);
+      }).catch(() => {
+        // Autoplay blocked — listen for ANY user interaction
+        resumeRef.current = startPlayback;
+        document.addEventListener("click", startPlayback, { capture: true, once: false });
+        document.addEventListener("touchstart", startPlayback, { capture: true, once: false });
+        document.addEventListener("keydown", startPlayback, { capture: true, once: false });
+        document.addEventListener("scroll", startPlayback, { capture: true, once: false });
+      });
+    }
 
     return () => {
+      cleanup();
       audio.pause();
       audio.src = "";
       audioRef.current = null;
-      document.removeEventListener("click", () => {});
-      document.removeEventListener("touchstart", () => {});
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);

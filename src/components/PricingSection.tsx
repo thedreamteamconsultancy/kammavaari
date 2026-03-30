@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Check, Star, Lock, Shield, Sparkles, Crown, Gem } from "lucide-react";
 import ScrollReveal from "./ScrollReveal";
+import { useAuthModal } from "@/hooks/useAuthModal";
 
 const plans = [
   {
@@ -41,6 +42,7 @@ const plans = [
 const PricingSection = () => {
   const [activePlan, setActivePlan] = useState(1);
   const [hoveredPlan, setHoveredPlan] = useState<number | null>(null);
+  const { openAuth } = useAuthModal();
 
   const isDark = (plan: typeof plans[0]) => plan.popular || plan.elite;
 
@@ -155,6 +157,7 @@ const PricingSection = () => {
             border: plan.popular ? 'none' : `1.5px solid ${isDark(plan) ? 'rgba(201,168,76,0.45)' : '#C9A84C'}`,
             boxShadow: plan.popular ? '0 6px 20px rgba(201,168,76,0.35)' : 'none',
           }}
+          onClick={() => openAuth('signup')}
         >
           Choose Plan
         </button>

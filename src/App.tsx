@@ -4,6 +4,7 @@ import { BrowserRouter, Route, Routes, useLocation } from "react-router-dom";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
+import { AuthModalProvider } from "@/hooks/useAuthModal";
 import LoadingScreen from "@/components/LoadingScreen";
 import MusicPlayer from "@/components/MusicPlayer";
 import PageTransition from "@/components/PageTransition";
@@ -53,8 +54,10 @@ const App = () => {
         <Sonner />
         <div style={{ background: 'hsl(30 50% 4%)', minHeight: '100vh', overflowX: 'hidden', width: '100%', maxWidth: '100vw' }}>
           <BrowserRouter>
-            <AnimatedRoutes />
-            <MusicPlayer />
+            <AuthModalProvider>
+              <AnimatedRoutes />
+              <MusicPlayer />
+            </AuthModalProvider>
           </BrowserRouter>
         </div>
         {showLoading && <LoadingScreen onComplete={handleLoadingComplete} />}

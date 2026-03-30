@@ -2,6 +2,8 @@ import { useState, useEffect } from "react";
 import { createPortal } from "react-dom";
 
 const LOGO_URL = "https://res.cloudinary.com/dvmrhs2ek/image/upload/v1774700099/wjibi9xge8sdyxqhi09a.png";
+const AUTH_BG = "https://i.pinimg.com/1200x/c9/62/af/c962af1118ca04572f1ceb86e6265492.jpg";
+const FORM_BG = "https://i.pinimg.com/736x/b6/c6/fe/b6c6fe9540ed4cce7c964ed2d0802d89.jpg";
 
 interface AuthModalProps {
   open: boolean;
@@ -99,29 +101,32 @@ const AuthModal = ({ open, onClose, initialMode }: AuthModalProps) => {
           scrollbarColor: 'rgba(201,168,76,0.3) transparent',
         }}
       >
-        {/* Header */}
+        {/* Header with background image */}
         <div
-          className="relative flex items-center justify-between"
+          className="relative overflow-hidden flex items-center justify-between"
           style={{
-            background: 'linear-gradient(135deg, #2D0A0A 0%, #5A1A1A 60%, #3D1808 100%)',
             padding: '18px clamp(20px,5vw,28px)',
-            minHeight: '68px',
+            minHeight: '100px',
           }}
         >
-          <img src={LOGO_URL} alt="Kammavaari" style={{ height: '28px' }} />
-          <p className="font-accent text-[13px] hidden sm:block" style={{ color: 'rgba(201,168,76,0.85)' }}>
-            Find Your Perfect Match
-          </p>
-          <button
-            onClick={onClose}
-            className="w-8 h-8 rounded-full flex items-center justify-center transition-all"
-            style={{ background: 'rgba(255,255,255,0.1)', color: 'rgba(255,255,255,0.7)', fontSize: '18px', border: 'none', cursor: 'pointer' }}
-            onMouseEnter={e => { e.currentTarget.style.background = 'rgba(255,255,255,0.2)'; e.currentTarget.style.color = 'white'; }}
-            onMouseLeave={e => { e.currentTarget.style.background = 'rgba(255,255,255,0.1)'; e.currentTarget.style.color = 'rgba(255,255,255,0.7)'; }}
-            aria-label="Close"
-          >
-            ×
-          </button>
+          <img src={AUTH_BG} alt="" className="absolute inset-0 w-full h-full object-cover" style={{ opacity: 0.35 }} />
+          <div className="absolute inset-0" style={{ background: 'linear-gradient(135deg, rgba(45,10,10,0.88) 0%, rgba(90,26,26,0.82) 60%, rgba(61,24,8,0.9) 100%)' }} />
+          <div className="relative z-10 flex items-center justify-between w-full">
+            <img src={LOGO_URL} alt="Kammavaari" style={{ height: '28px' }} />
+            <p className="font-accent text-[13px] hidden sm:block" style={{ color: 'rgba(201,168,76,0.85)' }}>
+              Find Your Perfect Match
+            </p>
+            <button
+              onClick={onClose}
+              className="w-8 h-8 rounded-full flex items-center justify-center transition-all"
+              style={{ background: 'rgba(255,255,255,0.1)', color: 'rgba(255,255,255,0.7)', fontSize: '18px', border: 'none', cursor: 'pointer' }}
+              onMouseEnter={e => { e.currentTarget.style.background = 'rgba(255,255,255,0.2)'; e.currentTarget.style.color = 'white'; }}
+              onMouseLeave={e => { e.currentTarget.style.background = 'rgba(255,255,255,0.1)'; e.currentTarget.style.color = 'rgba(255,255,255,0.7)'; }}
+              aria-label="Close"
+            >
+              ×
+            </button>
+          </div>
         </div>
 
         {/* Tab Switcher */}
@@ -145,7 +150,9 @@ const AuthModal = ({ open, onClose, initialMode }: AuthModalProps) => {
         </div>
 
         {/* Form Body */}
-        <div style={{ padding: '16px clamp(16px,4vw,28px) 14px' }}>
+        <div className="relative" style={{ padding: '16px clamp(16px,4vw,28px) 14px' }}>
+          <img src={FORM_BG} alt="" className="absolute inset-0 w-full h-full object-cover" style={{ opacity: 0.04 }} />
+          <div className="relative z-10">
           {mode === "login" ? (
             <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
               <div>
@@ -252,6 +259,7 @@ const AuthModal = ({ open, onClose, initialMode }: AuthModalProps) => {
               </button>
             </div>
           )}
+          </div>
         </div>
 
         {/* Footer */}

@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Search } from "lucide-react";
 import { useIsMobile } from "@/hooks/use-mobile";
+import { useAuthModal } from "@/hooks/useAuthModal";
 
 const HERO_IMAGES_MOBILE = [
   "https://i.pinimg.com/736x/e8/d1/a9/e8d1a9e54b2b6e5aa5e43a13ec4e8576.jpg",
@@ -67,6 +68,7 @@ const GoldParticles = () => {
 
 const HeroSection = () => {
   const isMobile = useIsMobile();
+  const { openAuth } = useAuthModal();
   const HERO_IMAGES = isMobile ? HERO_IMAGES_MOBILE : HERO_IMAGES_DESKTOP;
   const [phraseIdx, setPhraseIdx] = useState(0);
   const [visible, setVisible] = useState(true);
@@ -272,6 +274,7 @@ const HeroSection = () => {
                   color: 'hsl(var(--ink-900))',
                   borderRadius: '10px', padding: '0 24px', border: 'none', cursor: 'pointer',
                 }}
+                onClick={() => openAuth('signup')}
                 onMouseEnter={e => { e.currentTarget.style.background = 'hsl(var(--gold-300))'; }}
                 onMouseLeave={e => { e.currentTarget.style.background = 'hsl(var(--gold-500))'; }}
               >

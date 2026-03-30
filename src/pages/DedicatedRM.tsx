@@ -3,6 +3,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import ScrollReveal from "@/components/ScrollReveal";
+import { useAuthModal } from "@/hooks/useAuthModal";
 import { HeartHandshake, Phone, Calendar, Star, Users, MessageCircle, ArrowRight, Sparkles, Clock, Shield } from "lucide-react";
 
 const benefits = [
@@ -28,6 +29,7 @@ const testimonials = [
 
 const DedicatedRM = () => {
   const [activeProcess, setActiveProcess] = useState(0);
+  const { openAuth } = useAuthModal();
 
   return (
     <div className="min-h-screen" style={{ background: 'hsl(var(--cream-50))' }}>
@@ -37,7 +39,7 @@ const DedicatedRM = () => {
       <section className="relative flex items-center justify-center overflow-hidden" style={{ height: '70vh', minHeight: '480px' }}>
         <div className="absolute inset-0" style={{ background: 'hsl(var(--ink-900))' }} />
         <img
-          src="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1920&q=60"
+          src="https://i.pinimg.com/1200x/50/f0/67/50f0672e3ed17ccc1703bc91a40e5f34.jpg"
           alt="Dedicated RM"
           className="absolute inset-0 w-full h-full object-cover"
           style={{ opacity: 0.1, filter: 'saturate(0.4)' }}
@@ -71,7 +73,7 @@ const DedicatedRM = () => {
                 <div className="relative">
                   <div className="overflow-hidden" style={{ borderRadius: '28px', boxShadow: '0 24px 60px hsla(30,50%,4%,0.12)' }}>
                     <img
-                      src="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=800&q=70"
+                      src="https://i.pinimg.com/736x/ff/f9/92/fff992f8730317b747f5955629b66031.jpg"
                       alt="Professional relationship manager"
                       className="w-full aspect-[4/3] object-cover"
                     />
@@ -263,6 +265,7 @@ const DedicatedRM = () => {
               }}
               onMouseEnter={e => { e.currentTarget.style.transform = 'translateY(-2px)'; }}
               onMouseLeave={e => { e.currentTarget.style.transform = 'translateY(0)'; }}
+              onClick={() => openAuth('signup')}
             >
               Get Started <ArrowRight className="w-4 h-4" />
             </button>

@@ -1,8 +1,10 @@
 import ScrollReveal from "./ScrollReveal";
+import { useAuthModal } from "@/hooks/useAuthModal";
 
-const CTA_IMG = "https://images.unsplash.com/photo-1602216056096-3b40cc0c9944?auto=format&fit=crop&w=1920&q=80";
+const CTA_IMG = "https://i.pinimg.com/1200x/c9/62/af/c962af1118ca04572f1ceb86e6265492.jpg";
 
 const CTABanner = () => {
+  const { openAuth } = useAuthModal();
   return (
     <section className="relative overflow-hidden" style={{ minHeight: '480px' }}>
       {/* Real image */}
@@ -64,6 +66,7 @@ const CTABanner = () => {
               e.currentTarget.style.background = 'hsl(40 52% 54%)';
               e.currentTarget.style.transform = 'translateY(0)';
             }}
+            onClick={() => openAuth('signup')}
           >
             Register Free Today
           </button>

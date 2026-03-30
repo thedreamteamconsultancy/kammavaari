@@ -3,14 +3,15 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import ScrollReveal from "@/components/ScrollReveal";
+import { useAuthModal } from "@/hooks/useAuthModal";
 import { Star, Heart, Quote, ArrowRight, ArrowLeft, Sparkles, MapPin, Calendar } from "lucide-react";
 
 const stories = [
-  { names: "Lakshmi & Venkata", location: "Vijayawada", year: "2022", quote: "We were introduced through Kammavaari in December 2021. Our families connected instantly over shared values. Ours was a grand Telugu wedding that brought two families together beautifully. We are grateful forever.", image: "https://images.unsplash.com/photo-1519741347686-c1e0aadf4611?auto=format&fit=crop&w=800&q=70", duration: "3 months" },
-  { names: "Sujatha & Ravi", location: "Hyderabad", year: "2023", quote: "My parents were very particular about community values and family background. Kammavaari's dedicated RM found us a match that honored both traditional expectations and modern compatibility.", image: "https://images.unsplash.com/photo-1583939411023-14783179e581?auto=format&fit=crop&w=800&q=70", duration: "6 weeks" },
-  { names: "Divya & Karthik", location: "Guntur", year: "2023", quote: "From the moment we connected, our families felt at ease. The verification process gave us confidence. Our Muhurtham was on Akshaya Tritiya — auspicious in every way.", image: "https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=800&q=70", duration: "2 months" },
-  { names: "Priya & Suresh", location: "Eluru", year: "2024", quote: "The dedicated RM understood exactly what our family was looking for. Within three months of joining, we found our perfect match. The personalized approach made all the difference.", image: "https://images.unsplash.com/photo-1602216056096-3b40cc0c9944?auto=format&fit=crop&w=800&q=70", duration: "3 months" },
-  { names: "Anitha & Prasad", location: "KPHB, Hyderabad", year: "2024", quote: "We were skeptical about matrimony platforms, but Kammavaari's personal touch changed our perspective. Our RM treated us like family throughout the journey.", image: "https://images.unsplash.com/photo-1607861716497-e65ab29fc7ac?auto=format&fit=crop&w=800&q=70", duration: "5 weeks" },
+  { names: "Lakshmi & Venkata", location: "Vijayawada", year: "2022", quote: "We were introduced through Kammavaari in December 2021. Our families connected instantly over shared values. Ours was a grand Telugu wedding that brought two families together beautifully. We are grateful forever.", image: "https://i.pinimg.com/736x/e8/d1/a9/e8d1a9e54b2b6e5aa5e43a13ec4e8576.jpg", duration: "3 months" },
+  { names: "Sujatha & Ravi", location: "Hyderabad", year: "2023", quote: "My parents were very particular about community values and family background. Kammavaari's dedicated RM found us a match that honored both traditional expectations and modern compatibility.", image: "https://i.pinimg.com/1200x/9e/7b/81/9e7b815120c303564fc3205be4bacd86.jpg", duration: "6 weeks" },
+  { names: "Divya & Karthik", location: "Guntur", year: "2023", quote: "From the moment we connected, our families felt at ease. The verification process gave us confidence. Our Muhurtham was on Akshaya Tritiya — auspicious in every way.", image: "https://i.pinimg.com/736x/7a/82/52/7a8252022f3d1b0461088a17eaeda794.jpg", duration: "2 months" },
+  { names: "Priya & Suresh", location: "Eluru", year: "2024", quote: "The dedicated RM understood exactly what our family was looking for. Within three months of joining, we found our perfect match. The personalized approach made all the difference.", image: "https://cdn0.weddingwire.in/article/3427/original/1280/jpg/127243-golden-shutter-studio.jpeg", duration: "3 months" },
+  { names: "Anitha & Prasad", location: "KPHB, Hyderabad", year: "2024", quote: "We were skeptical about matrimony platforms, but Kammavaari's personal touch changed our perspective. Our RM treated us like family throughout the journey.", image: "https://i.pinimg.com/736x/7f/76/21/7f76217aebc3af15bab86140a9ad9c76.jpg", duration: "5 weeks" },
 ];
 
 const stats = [
@@ -22,6 +23,7 @@ const stats = [
 
 const SuccessStories = () => {
   const [activeStory, setActiveStory] = useState(0);
+  const { openAuth } = useAuthModal();
 
   const nextStory = () => setActiveStory(p => (p + 1) % stories.length);
   const prevStory = () => setActiveStory(p => (p - 1 + stories.length) % stories.length);
@@ -34,7 +36,7 @@ const SuccessStories = () => {
       <section className="relative flex items-center justify-center overflow-hidden" style={{ height: '70vh', minHeight: '480px' }}>
         <div className="absolute inset-0" style={{ background: 'hsl(var(--ink-900))' }} />
         <img
-          src="https://images.unsplash.com/photo-1519741347686-c1e0aadf4611?auto=format&fit=crop&w=1920&q=60"
+          src="https://i.pinimg.com/1200x/c9/62/af/c962af1118ca04572f1ceb86e6265492.jpg"
           alt="Happy couple"
           className="absolute inset-0 w-full h-full object-cover"
           style={{ opacity: 0.12, filter: 'saturate(0.5)' }}
@@ -259,6 +261,7 @@ const SuccessStories = () => {
               }}
               onMouseEnter={e => { e.currentTarget.style.transform = 'translateY(-2px)'; }}
               onMouseLeave={e => { e.currentTarget.style.transform = 'translateY(0)'; }}
+              onClick={() => openAuth('signup')}
             >
               Start Your Journey <ArrowRight className="w-4 h-4" />
             </button>

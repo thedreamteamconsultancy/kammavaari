@@ -1,6 +1,8 @@
 import { Search, Sparkles } from "lucide-react";
+import { useAuthModal } from "@/hooks/useAuthModal";
 
 const SearchWidget = () => {
+  const { openAuth } = useAuthModal();
   return (
     <div
       className="max-w-2xl mx-auto"
@@ -91,6 +93,7 @@ const SearchWidget = () => {
             e.currentTarget.style.background = 'hsl(40 52% 54%)';
             e.currentTarget.style.boxShadow = 'none';
           }}
+          onClick={() => openAuth('signup')}
         >
           <Search className="w-4 h-4" />
           Let's Begin

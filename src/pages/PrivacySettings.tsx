@@ -6,10 +6,10 @@ import ScrollReveal from "@/components/ScrollReveal";
 import { Lock, EyeOff, Shield, Fingerprint, CheckCircle, ArrowRight, Sparkles, ToggleRight, KeyRound, UserX } from "lucide-react";
 
 const features = [
-  { icon: Lock, title: "Profile Visibility Control", desc: "Choose who can see your profile — only verified members, premium users, or specific community members. Toggle visibility on/off anytime.", image: "https://images.unsplash.com/photo-1563013544-824ae1b704d3?auto=format&fit=crop&w=600&q=70" },
-  { icon: EyeOff, title: "Photo Privacy", desc: "Keep your photos private by default. Share them only with matches you approve through our secure request system.", image: "https://images.unsplash.com/photo-1555949963-ff9fe0c870eb?auto=format&fit=crop&w=600&q=70" },
-  { icon: Shield, title: "Contact Protection", desc: "Your phone number and email are never shared without your explicit consent. All communication starts through our secure platform.", image: "https://images.unsplash.com/photo-1510511459019-5dda7724fd87?auto=format&fit=crop&w=600&q=70" },
-  { icon: Fingerprint, title: "Data Encryption", desc: "All personal data is encrypted at rest and in transit using AES-256 encryption, following international security best practices.", image: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=600&q=70" },
+  { icon: Lock, title: "Profile Visibility Control", desc: "Choose who can see your profile — only verified members, premium users, or specific community members. Toggle visibility on/off anytime.", image: "https://i.pinimg.com/1200x/f2/77/26/f27726df2645d4c0fd62cb8d59bee552.jpg" },
+  { icon: EyeOff, title: "Photo Privacy", desc: "Keep your photos private by default. Share them only with matches you approve through our secure request system.", image: "https://i.pinimg.com/736x/d2/22/6f/d2226f65207174459f0f80ccc32c042e.jpg" },
+  { icon: Shield, title: "Contact Protection", desc: "Your phone number and email are never shared without your explicit consent. All communication starts through our secure platform.", image: "https://i.pinimg.com/736x/e8/d1/a9/e8d1a9e54b2b6e5aa5e43a13ec4e8576.jpg" },
+  { icon: Fingerprint, title: "Data Encryption", desc: "All personal data is encrypted at rest and in transit using AES-256 encryption, following international security best practices.", image: "https://i.pinimg.com/1200x/41/7e/3c/417e3c7cac7159bb1b7fc23d54605a13.jpg" },
 ];
 
 const controls = [
@@ -41,7 +41,7 @@ const PrivacySettings = () => {
       <section className="relative flex items-center justify-center overflow-hidden" style={{ height: '70vh', minHeight: '480px' }}>
         <div className="absolute inset-0" style={{ background: 'hsl(var(--ink-900))' }} />
         <img
-          src="https://images.unsplash.com/photo-1563013544-824ae1b704d3?auto=format&fit=crop&w=1920&q=60"
+          src="https://i.pinimg.com/736x/20/10/94/201094000a95d72820f7dbaee55456f9.jpg"
           alt="Privacy"
           className="absolute inset-0 w-full h-full object-cover"
           style={{ opacity: 0.08, filter: 'saturate(0.3)' }}
